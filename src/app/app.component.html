@@ -1,0 +1,26 @@
+<!-- app.component.html -->
+<div class="container">
+  <h2>{{ title }}</h2>
+
+  <!-- Navigation Bar -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/departments" routerLinkActive="active">Departments</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/department-form" routerLinkActive="active">Add Department</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/transactions" routerLinkActive="active">Transactions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/transaction-form" routerLinkActive="active">Add Transaction</a>
+    </li>
+  </ul>
+ 
+
+  <router-outlet></router-outlet>
+</div>

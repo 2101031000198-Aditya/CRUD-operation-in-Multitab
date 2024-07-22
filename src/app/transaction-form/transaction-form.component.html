@@ -1,0 +1,51 @@
+<div>
+  <h2>Add Transaction</h2>
+  <form #transactionForm="ngForm" (ngSubmit)="addTransaction()" novalidate>
+      <label>Start Time: </label>
+      <input [(ngModel)]="newTransaction.StartTime" name="StartTime" type="datetime-local" required>
+      <div *ngIf="transactionForm.controls['StartTime'].hasError('required') && transactionForm.controls['StartTime'].touched">
+          Start Time is required.
+      </div>
+      <br>
+
+      <label>End Time: </label>
+      <input [(ngModel)]="newTransaction.EndTime" name="EndTime" type="datetime-local" required>
+      <div *ngIf="transactionForm.controls['EndTime'].hasError('required') && transactionForm.controls['EndTime'].touched">
+          End Time is required.
+      </div>
+      <div *ngIf="newTransaction.StartTime && newTransaction.EndTime && newTransaction.StartTime >= newTransaction.EndTime">
+          Start Time must be before End Time.
+      </div>
+      <br>
+
+      <label>Vehicle Name: </label>
+      <input [(ngModel)]="newTransaction.VehicleName" name="VehicleName" required>
+      <div *ngIf="transactionForm.controls['VehicleName'].hasError('required') && transactionForm.controls['VehicleName'].touched">
+          Vehicle Name is required.
+      </div>
+      <br>
+
+      <label>Department: </label>
+<select [(ngModel)]="newTransaction.Department" name="Department" required>
+  <option value="IT">IT</option>
+  <option value="HR">HR</option>
+  <option value="Marketing">Marketing</option>
+  <option value="Finance">Finance</option>
+  <option value="Quality">Quality</option>
+  <option value="Designing">Designing</option>
+</select>
+<div *ngIf="transactionForm.controls['Department'].hasError('required') && transactionForm.controls['Department'].touched">
+  Department is required.
+</div>
+
+
+      <label>Vehicle Number: </label>
+      <input [(ngModel)]="newTransaction.VehicleNumber" name="VehicleNumber" required>
+      <div *ngIf="transactionForm.controls['VehicleNumber'].hasError('required') && transactionForm.controls['VehicleNumber'].touched">
+          Vehicle Number is required.
+      </div>
+      <br>
+
+      <button type="submit" [disabled]="transactionForm.invalid">Add Transaction</button>
+  </form>
+</div>

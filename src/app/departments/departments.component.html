@@ -1,0 +1,75 @@
+
+<div>
+  <h2>Departments</h2>
+
+  <div class="filter-container">
+    <label for="monthFilter">Filter by Month: </label>
+    <select id="monthFilter" [(ngModel)]="selectedMonth" (change)="filterDepartments()">
+      <option value="all">All Months</option>
+      <option value="1">January</option>
+      <option value="2">February</option>
+      <option value="3">March</option>
+      </select>
+  </div>
+
+  <!-- <div>
+    <label for="monthFilter">Filter by Month: </label>
+    <select id="monthFilter" [(ngModel)]="selectedMonth" (change)="filterDepartments()">
+      <option *ngFor="let month of months" [value]="month.value">{{ month.label }}</option>
+    </select>
+  </div> -->
+  
+
+  <div class="table-container">
+    <div class="table">
+      <div class="table-row header">
+        <div class="table-cell">Name</div>
+        <div class="table-cell">Department Number</div>
+        <div class="table-cell">Total Vehicles</div>
+        <div class="table-cell">Company Name</div>
+        <div class="table-cell">Department Type</div>
+        <div class="table-cell">Created Date</div>
+      </div>
+
+      <div class="table-row" *ngFor="let department of filteredDepartments">
+        <div class="table-cell">{{ department.Name }}</div>
+        <div class="table-cell">{{ department.DepartmentNumber }}</div>
+        <div class="table-cell">{{ department.TotalVehicles }}</div>
+        <div class="table-cell">{{ department.CompanyName }}</div>
+        <div class="table-cell">{{ department.DepartmentType }}</div>
+        <div class="table-cell">{{ department.CreatedDate }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div>
+  <h2>Add Department</h2>
+  <form>
+    <label>Name: </label>
+    <input [(ngModel)]="newDepartment.Name" name="Name" required>
+    <br>
+
+    <label>Department Number: </label>
+    <input [(ngModel)]="newDepartment.DepartmentNumber" name="DepartmentNumber" required>
+    <br>
+
+    <label>Total Vehicles: </label>
+    <input [(ngModel)]="newDepartment.TotalVehicles" name="TotalVehicles" type="number" required>
+    <br>
+
+    <label>Company Name: </label>
+    <input [(ngModel)]="newDepartment.CompanyName" name="CompanyName" required>
+    <br>
+
+    <label>Department Type: </label>
+    <input [(ngModel)]="newDepartment.DepartmentType" name="DepartmentType" required>
+    <br>
+
+    <label>Created Date: </label>
+    <input [(ngModel)]="newDepartment.CreatedDate" name="CreatedDate" type="datetime-local" required>
+    <br>
+
+    <button (click)="addDepartment()">Add Department</button>
+  </form>
+</div> -->

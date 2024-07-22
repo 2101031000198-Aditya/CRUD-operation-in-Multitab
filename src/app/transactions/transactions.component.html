@@ -1,0 +1,62 @@
+<!-- transaction.component.html -->
+
+<!-- <div>
+  <h2>Transactions</h2>
+
+  <div class="table-container">
+    <div class="table">
+    
+      <div class="table-row header">
+        <div class="table-cell">Start Time</div>
+        <div class="table-cell">End Time</div>
+        <div class="table-cell">Vehicle Name</div>
+        <div class="table-cell">Department</div>
+        <div class="table-cell">Vehicle Number</div>
+      </div>
+
+      
+      <div class="table-row" *ngFor="let transaction of transactions">
+        <div class="table-cell">{{ transaction.StartTime | date }}</div>
+        <div class="table-cell">{{ transaction.EndTime | date }}</div>
+        <div class="table-cell">{{ transaction.VehicleName }}</div>
+        <div class="table-cell">{{ transaction.Department }}</div>
+        <div class="table-cell">{{ transaction.VehicleNumber }}</div>
+      </div>
+    </div>
+  </div>
+
+</div> -->
+
+<div class="filter-container">
+  <label for="monthFilter">Filter by Month: </label>
+  <select id="monthFilter" [(ngModel)]="selectedMonth" (change)="filterTransactions()">
+    <option value="all">All Months</option>
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <!-- Add options for other months as needed -->
+  </select>
+</div>
+
+<h2>Transactions</h2>
+
+<div class="table-container">
+  <div class="table">
+    <!-- Header row -->
+    <div class="table-row header">
+      <div class="table-cell">Start Time</div>
+      <div class="table-cell">End Time</div>
+      <div class="table-cell">Vehicle Name</div>
+      <div class="table-cell">Department</div>
+      <div class="table-cell">Vehicle Number</div>
+    </div>
+
+    <!-- Data rows -->
+    <div class="table-row" *ngFor="let transaction of filteredTransactions">
+      <div class="table-cell">{{ transaction.StartTime | date }}</div>
+      <div class="table-cell">{{ transaction.EndTime | date }}</div>
+      <div class="table-cell">{{ transaction.VehicleName }}</div>
+      <div class="table-cell">{{ transaction.Department }}</div>
+      <div class="table-cell">{{ transaction.VehicleNumber }}</div>
+    </div>
+  </div>
+</div>

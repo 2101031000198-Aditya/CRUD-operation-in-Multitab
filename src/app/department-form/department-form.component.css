@@ -1,0 +1,48 @@
+/* departments.component.css */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  label {
+    margin-top: 10px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
+  button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+  
+  div {
+    color: #3498db;
+    margin-top: 5px;
+  }
+  

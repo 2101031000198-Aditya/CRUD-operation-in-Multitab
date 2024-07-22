@@ -1,0 +1,52 @@
+/* department.component.css */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .header {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .table-row {
+    display: flex;
+  }
+  
+  .table-cell {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #3498db;
+  }
+  
+  .table-cell:first-child {
+    flex: 2; /* Adjust the width of the first column */
+  }
+  
+  /* Alternate row background color */
+  .table-row:nth-child(even) {
+    background-color: #ecf0f1;
+  }
+  
+  /* Hover effect */
+  .table-row:hover {
+    background-color: #d4e6f1;
+  }
+  .filter-container {
+    text-align: right;
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+  
+  /* Style the select element */
+  #monthFilter {
+    padding: 5px;
+    font-size: 14px;
+    /* Add any other styles you'd like */
+  }

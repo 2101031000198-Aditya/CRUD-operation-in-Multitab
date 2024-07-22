@@ -1,0 +1,172 @@
+<div>
+  <h2>Users</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Department</th>
+        <th>Photo</th>
+        <!-- <th>Action</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let users of user">
+        <td>{{ users.Username }}</td>
+        <td>{{ users.Email }}</td>
+        <td>{{ users.Phone_number }}</td>
+        <td>{{ users.Department }}</td>
+        <td><img *ngIf="users.Photo" [src]="'data:image/png;base64,'+users.Photo" alt="User Photo" style="max-width: 100px; max-height: 100px;"></td>
+        <!-- 'data:image/png;base64,'+ -->
+        <!-- <td><button (click)="viewUserDetails(user)">View</button></td> -->
+       
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  
+  <button class="add-user-button" (click)="toggleForm()">Add User</button>
+
+
+<div *ngIf="showForm" class="contnt">
+
+  <form #usersForm="ngForm" (ngSubmit)="addUser(usersForm.value)" class="mainform">
+    <!-- <label for="formGroupExampleInput" class="form-label labl">Name:</label>
+    <input type="text" ngModel name="Name" placeholder="Enter Your Name" class="form-control fw" pattern="[a-zA-Z ]*"
+      required>
+    <div *ngIf="usersForm.controls['Name'].errors?.['pattern'] && usersForm.controls['Name'].touched"
+      class="text-danger">
+      Only alphabets and spaces are allowed.
+    </div>
+    <div *ngIf="usersForm.controls['Name'].errors?.['required'] && usersForm.controls['Name'].touched"
+      class="text-danger">
+      Name is required.
+    </div>
+    <br><br> -->
+
+    <label for="formGroupExampleInput2" class="form-label labl">UserName:</label>
+    <input type="text" ngModel name="UserName" placeholder="Enter Your UserName" class="form-control fw"
+      pattern="[a-zA-Z ]*" required>
+    <div *ngIf="usersForm.controls['UserName'].errors?.['pattern'] && usersForm.controls['UserName'].touched"
+      class="text-danger">
+      Only alphabets and spaces are allowed.
+    </div>
+    <div *ngIf="usersForm.controls['UserName'].errors?.['required'] && usersForm.controls['UserName'].touched"
+      class="text-danger">
+      UserName is required.
+    </div>
+    <br><br>
+
+    <label for="formGroupExampleInput" class="form-label labl">Password:</label>
+    <input type="password" ngModel name="Password"  [(ngModel)]="newUser.Password" placeholder="Enter your Password" class="form-control fw"
+      pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" required >
+    <div *ngIf="usersForm.controls['Password'].errors?.['pattern'] && usersForm.controls['Password'].touched"
+      class="text-danger">
+      Password must have one uppercase, one lowercase, one number, one symbol, and at least 8 characters.
+    </div><br>
+    <!-- <div class="password-strength-bar" [ngClass]="{'weak': passwordStrength === 'weak', 'medium': passwordStrength === 'medium', 'strong': passwordStrength === 'strong'}">
+      Password Strength: {{ passwordStrength }}
+    </div> -->
+    <!-- <app-password [passwordToCheck]="passwordForm.value.password"></app-password> -->
+    <!-- <app-password [passwordToCheck]="getPasswordValue()"></app-password> -->
+    <!-- <app-password ></app-password> -->
+    <!-- [passwordToCheck]="passwordForm.value.Password" -->
+
+    <div class="password-strength">
+      <div class="password-strength-bars">
+        <div class="bar" [ngStyle]="{ 'background-color': getPasswordStrengthColor('Weak', newUser.Password) }"></div>
+        <div class="bar" [ngStyle]="{ 'background-color': getPasswordStrengthColor('Medium', newUser.Password) }"></div>
+        <div class="bar" [ngStyle]="{ 'background-color': getPasswordStrengthColor('Medium', newUser.Password) }"></div>
+        <div class="bar" [ngStyle]="{ 'background-color': getPasswordStrengthColor('Strong', newUser.Password) }"></div>
+        <div class="bar" [ngStyle]="{ 'background-color': getPasswordStrengthColor('Strong', newUser.Password) }"></div>
+        <div class="bar" [ngStyle]="{ 'background-color': getPasswordStrengthColor('Strong', newUser.Password) }"></div>
+      </div>
+      <div class="strength-label">{{ getPasswordStrength(newUser.Password) }} Password</div>
+    </div>    
+
+    <div *ngIf="usersForm.controls['Password'].errors?.['required'] && usersForm.controls['Password'].touched"
+      class="text-danger">
+      Password is required.
+    </div>
+    <br><br>
+
+    <!-- <label for="formGroupExampleInput" class="form-label labl">Re-type Password:</label>
+    <input type="password" ngModel name="ReTypePassword" placeholder="Enter your Re-type Password"
+      class="form-control fw" [pattern]="usersForm.controls['Password'].value" required>
+    <div
+      *ngIf="usersForm.controls['ReTypePassword'].errors?.['pattern'] && usersForm.controls['ReTypePassword'].touched"
+      class="text-danger">
+      Passwords do not match.
+    </div>
+
+    <div
+      *ngIf="usersForm.controls['ReTypePassword'].errors?.['required'] && usersForm.controls['ReTypePassword'].touched"
+      class="text-danger">
+      Re-type Password is required.
+    </div> -->
+    <br><br>
+
+    <label for="formGroupExampleInput2" class="form-label labl">Email:</label>
+    <input type="email" ngModel name="Email" placeholder="Enter your Email" class="form-control fw" required>
+    <div *ngIf="usersForm.controls['Email'].errors?.['required'] && usersForm.controls['Email'].touched"
+      class="text-danger">
+      Email is required.
+    </div>
+    <div *ngIf="usersForm.controls['Email'].errors?.['email'] && usersForm.controls['Email'].touched"
+      class="text-danger">
+      Enter a valid email address.
+    </div>
+    <br><br>
+
+    <label for="formGroupExampleInput2" class="form-label labl">PhoneNo:</label>
+    <input type="text" ngModel name="Phone_number" placeholder="Enter your PhoneNo" class="form-control fw"
+      pattern="[0-9]{10}" required>
+    <div *ngIf="usersForm.controls['Phone_number'].errors?.['pattern'] && usersForm.controls['Phone_number'].touched"
+      class="text-danger">
+      PhoneNo must be a 10-digit number.
+    </div>
+    <div *ngIf="usersForm.controls['Phone_number'].errors?.['required'] && usersForm.controls['Phone_number'].touched"
+      class="text-danger">
+      PhoneNo is required.
+    </div>
+    <br><br>
+
+    <label for="formGroupExampleInput2" class="form-label labl">Department:</label>
+    <input type="text" ngModel name="Department" placeholder="Enter your Department" class="form-control fw" required>
+    <div *ngIf="usersForm.controls['Department'].errors?.['required'] && usersForm.controls['Department'].touched"
+      class="text-danger">
+      Department is required.
+    </div>
+    <br><br>
+
+    <label for="formGroupExampleInput2" class="form-label labl">UserPhoto:</label>
+    <input type="file" ngModel name="Photo" placeholder="Enter your path" class="form-control fw"
+      (change)="uploadPic($event)">
+    <br><br>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+</div>
+
+<!-- <div class="depdetails">
+  <div *ngIf="selectedUser">
+    <h2>Selected User Details</h2>
+    <p>ID: {{ selectedUser.Id }}</p>
+    <p>Name: {{ selectedUser.Name }}</p>
+    <p>UserName: {{ selectedUser.UserName }}</p>
+    <p>Password: {{ selectedUser.Password }}</p>
+    <p>Email: {{ selectedUser.Email }}</p>
+    <p>PhoneNo: {{ selectedUser.PhoneNo}}</p>
+    <p>Department: {{ selectedUser.Department }}</p>
+    <p>User Photo: </p>
+    <div>
+      <img [src]="'data:image/png;base64,' + selectedUser.UserPhoto" alt="User Photo"
+        style="max-width: 100px; max-height: 100px;">
+
+    </div>
+    <button (click)="closeDetails()" class="btn btn-success">Close</button>
+  </div>
+</div> -->

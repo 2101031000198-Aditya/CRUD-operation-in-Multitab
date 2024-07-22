@@ -1,0 +1,53 @@
+<div>
+  <h2>Add Department</h2>
+  <form #departmentForm="ngForm" (ngSubmit)="addDepartment()" novalidate>
+      <label>Name: </label>
+      <input [(ngModel)]="newDepartment.Name" name="Name" required pattern="[a-zA-Z]+">
+      <div *ngIf="departmentForm.controls['Name'].hasError('required') && departmentForm.controls['Name'].touched">
+          Name is required.
+      </div>
+      <div *ngIf="departmentForm.controls['Name'].hasError('pattern') && departmentForm.controls['Name'].touched">
+          Only alphabets are allowed.
+      </div>
+      <br>
+
+      <label>Department Number: </label>
+      <input [(ngModel)]="newDepartment.DepartmentNumber" name="DepartmentNumber" required>
+      <div *ngIf="departmentForm.controls['DepartmentNumber'].hasError('required') && departmentForm.controls['DepartmentNumber'].touched">
+          Department Number is required.
+      </div>
+      <br>
+
+      <label>Total Vehicles: </label>
+      <input [(ngModel)]="newDepartment.TotalVehicles" name="TotalVehicles" type="number" required>
+      <div *ngIf="departmentForm.controls['TotalVehicles'].hasError('required') && departmentForm.controls['TotalVehicles'].touched">
+          Total Vehicles is required.
+      </div>
+      <br>
+
+      <label>Company Name: </label>
+      <input [(ngModel)]="newDepartment.CompanyName" name="CompanyName" required>
+      <div *ngIf="departmentForm.controls['CompanyName'].hasError('required') && departmentForm.controls['CompanyName'].touched">
+          Company Name is required.
+      </div>
+      <br>
+
+      <label>Department Type: </label>
+      <input [(ngModel)]="newDepartment.DepartmentType" name="DepartmentType" required>
+      <div *ngIf="departmentForm.controls['DepartmentType'].hasError('required') && departmentForm.controls['DepartmentType'].touched">
+          Department Type is required.
+      </div>
+      <br>
+
+      <label>Created Date: </label>
+      <input [(ngModel)]="newDepartment.CreatedDate" name="CreatedDate" type="datetime-local" required>
+      <div *ngIf="departmentForm.controls['CreatedDate'].hasError('required') && departmentForm.controls['CreatedDate'].touched">
+          Created Date is required.
+      </div>
+      <br>
+      
+
+      <button type="submit" [disabled]="departmentForm.invalid">Add Department</button>
+  </form>
+</div>
+
